@@ -14,76 +14,75 @@ namespace ExcelExample
         public static ExcelWorksheet myWorksheet;
         public static HashSet<string> columns;
 
-        static void Main(string[] args)
-        {
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            using (ExcelPackage xlPackage = new ExcelPackage(new FileInfo(path)))
-            {
-                myWorksheet = xlPackage.Workbook.Worksheets.FirstOrDefault(); //select sheet here
+        //static void Main(string[] args)
+        //{
+        //    ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+        //    using (ExcelPackage xlPackage = new ExcelPackage(new FileInfo(path)))
+        //    {
+        //        myWorksheet = xlPackage.Workbook.Worksheets.FirstOrDefault(); //select sheet here
 
-                var qwe = myWorksheet.Cells[3, 4];
-                var users = new List<User>();
-                columns = new HashSet<string>();
-                for (var i = 4; i < 531; i += 2)// for (var i = 4; i < 531; i += 2) (var i = 112; i < 114; i += 2)
-                {   // Январь
-                    var result1 = getTablesRgex(i + 1, i, 7, 38);
-                    // Февряль
-                    var result2 = getTablesRgex(i + 1, i, 60, 89);
-                    // Март
-                    var result3 = getTablesRgex(i + 1, i, 92, 123);
-                    // Апрель
-                    var result4 = getTablesRgex(i + 1, i, 126, 156);
-                    // Май
-                    var result5 = getTablesRgex(i + 1, i, 159, 190);
-                    // Июнь
-                    var result6 = getTablesRgex(i + 1, i, 193, 223);
-                    // Июль
-                    var result7 = getTablesRgex(i + 1, i, 226, 257);
-                    // Август
-                    var result8 = getTablesRgex(i + 1, i, 260, 291);
-                    // Сентябрь
-                    var result9 = getTablesRgex(i + 1, i, 294, 324);
-                    // Октябрь
-                    var result10 = getTablesRgex(i + 1, i, 327, 358);
-                    // Ноябрь
-                    var result11 = getTablesRgex(i + 1, i, 361, 391);
-                    // Декабрь
-                    var result12 = getTablesRgex(i + 1, i, 394, 425);
+        //        var users = new List<User>();
+        //        columns = new HashSet<string>();
+        //        for (var i = 4; i < 531; i += 2)// for (var i = 4; i < 531; i += 2) (var i = 112; i < 114; i += 2)
+        //        {   // Январь
+        //            var result1 = getTablesRgex(i + 1, i, 7, 38);
+        //            // Февряль
+        //            var result2 = getTablesRgex(i + 1, i, 60, 89);
+        //            // Март
+        //            var result3 = getTablesRgex(i + 1, i, 92, 123);
+        //            // Апрель
+        //            var result4 = getTablesRgex(i + 1, i, 126, 156);
+        //            // Май
+        //            var result5 = getTablesRgex(i + 1, i, 159, 190);
+        //            // Июнь
+        //            var result6 = getTablesRgex(i + 1, i, 193, 223);
+        //            // Июль
+        //            var result7 = getTablesRgex(i + 1, i, 226, 257);
+        //            // Август
+        //            var result8 = getTablesRgex(i + 1, i, 260, 291);
+        //            // Сентябрь
+        //            var result9 = getTablesRgex(i + 1, i, 294, 324);
+        //            // Октябрь
+        //            var result10 = getTablesRgex(i + 1, i, 327, 358);
+        //            // Ноябрь
+        //            var result11 = getTablesRgex(i + 1, i, 361, 391);
+        //            // Декабрь
+        //            var result12 = getTablesRgex(i + 1, i, 394, 425);
 
-                    var month = new Dictionary<int, Dictionary<string, List<double>>>();
-                    month.Add(0, result1);
-                    month.Add(1, result2);
-                    month.Add(2, result3);
-                    month.Add(3, result4);
-                    month.Add(4, result5);
-                    month.Add(5, result6);
-                    month.Add(6, result7);
-                    month.Add(7, result8);
-                    month.Add(8, result9);
-                    month.Add(9, result10);
-                    month.Add(10, result11);
-                    month.Add(11, result12);
+        //            var month = new Dictionary<int, Dictionary<string, List<double>>>();
+        //            month.Add(0, result1);
+        //            month.Add(1, result2);
+        //            month.Add(2, result3);
+        //            month.Add(3, result4);
+        //            month.Add(4, result5);
+        //            month.Add(5, result6);
+        //            month.Add(6, result7);
+        //            month.Add(7, result8);
+        //            month.Add(8, result9);
+        //            month.Add(9, result10);
+        //            month.Add(10, result11);
+        //            month.Add(11, result12);
 
-                    var username = myWorksheet.Cells[i, 2].Text;
-                    var position = myWorksheet.Cells[i, 4].Text;
-                    var number = myWorksheet.Cells[i, 1].Text;
-                    users.Add(new User()
-                    {
-                        Fullname = username,
-                        Number = number,
-                        Months = month,
-                        //FirstMonth = result1,
-                        Position = position
-                    });
-                }
-                WriteTable(users);
-            }
+        //            var username = myWorksheet.Cells[i, 2].Text;
+        //            var position = myWorksheet.Cells[i, 4].Text;
+        //            var number = myWorksheet.Cells[i, 1].Text;
+        //            users.Add(new User()
+        //            {
+        //                Fullname = username,
+        //                Number = number,
+        //                Months = month,
+        //                //FirstMonth = result1,
+        //                Position = position
+        //            });
+        //        }
+        //        WriteTable(users);
+        //    }
 
-            //var workbook = WorkBook.Load(path);
-            //sheet = workbook.WorkSheets.First();
+        //    //var workbook = WorkBook.Load(path);
+        //    //sheet = workbook.WorkSheets.First();
 
-            //var res = getTables(10, 9, 6, 37);
-        }
+        //    //var res = getTables(10, 9, 6, 37);
+        //}
 
         public static void WriteTable(List<User> users)
         {
