@@ -9,7 +9,7 @@ namespace ExcelExample
 {
     public class Program
     {
-        public static string path = @"C:\Users\chilo\source\repos\ExcelExample\ExcelExample\Svod_2020_g.xlsx";
+        public static string path = @"C:\Users\chilo\source\repos\ExcelExample\ExcelExample\files\Svod_2020_g.xlsx";
         //public static WorkSheet sheet = null;
         public static ExcelWorksheet myWorksheet;
         public static HashSet<string> columns;

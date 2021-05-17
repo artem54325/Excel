@@ -8,7 +8,7 @@ namespace ExcelExample
 {
     public class Excel2
     {
-        public static string path = @"C:\Users\chilo\source\repos\ExcelExample\ExcelExample\myExcel2.xlsx";
+        public static string path = @"C:\Users\chilo\source\repos\ExcelExample\ExcelExample\files\myExcel2.xlsx";
         public static List<BMP> list = new List<BMP>();
         public static Dictionary<string, int> dict = new Dictionary<string, int>();
         public static int CONSTLeft = 3;
